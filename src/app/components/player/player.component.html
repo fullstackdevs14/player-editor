@@ -12,40 +12,42 @@
                 <div>
                     <app-editable-field label="Name" [(value)]="player.name"></app-editable-field>
                 </div>
-                <h2 class="mat-title mt-20">Basic Attributes</h2>
-                <div>
-                    <app-editable-field label="Strength" [(value)]="player.strength" type="number" [min]="0">
-                    </app-editable-field>
-                    <app-editable-field label="Dexterity" [(value)]="player.dexterity" type="number" [min]="0">
-                    </app-editable-field>
-                    <app-editable-field label="Mind" [(value)]="player.mind" type="number" [min]="0">
-                    </app-editable-field>
-                    <app-editable-field label="Presence" [(value)]="player.presence" type="number" [min]="0">
-                    </app-editable-field>
-                </div>
             </div>
-        </mat-card>
-        <mat-card class="col mw-300">
-            <h2 class="mat-title">Combat Attributes</h2>
+            <h2 class="mat-title mt-20">Basic Attributes</h2>
             <div class="col">
-                <div class="row vitality">
-                    <app-editable-field label="Vitality" [value]="player.vitality" [editable]="false">
-                    </app-editable-field>
-                    <span class="damage-count">(Damaged {{ player.damagedCount }} times)</span>
-                    <button mat-button color="primary" (click)="takeDamage()">
-                        Take Damage
-                    </button>
-                </div>
-                <app-editable-field label="Evasion" [value]="player.evasion" [editable]="false"></app-editable-field>
-                <div class="row armor">
-                    <app-editable-field label="Armor" [value]="player.armor" [editable]="false"></app-editable-field>
-                    <span class="accessory" *ngIf="player.armorAccessory.key">{{ player.armorAccessory.label }}</span>
-                </div>
-                <app-editable-field label="Alacrity" [value]="player.alacrity" [editable]="false"></app-editable-field>
-                <app-editable-field label="Tenacity" [value]="player.tenacity" [editable]="false"></app-editable-field>
-                <app-editable-field label="Power" [value]="player.power" [editable]="false"></app-editable-field>
+            <div>
+                <app-editable-field label="Strength" [(value)]="player.strength" type="number" [min]="0">
+                </app-editable-field>
+                <app-editable-field label="Dexterity" [(value)]="player.dexterity" type="number" [min]="0">
+                </app-editable-field>
+                <app-editable-field label="Mind" [(value)]="player.mind" type="number" [min]="0">
+                </app-editable-field>
+                <app-editable-field label="Presence" [(value)]="player.presence" type="number" [min]="0">
+                </app-editable-field>
             </div>
-        </mat-card>
+    </div>
+    </mat-card>
+    <mat-card class="col mw-300">
+        <h2 class="mat-title">Combat Attributes</h2>
+        <div class="col">
+            <div class="row vitality">
+                <app-editable-field label="Vitality" [value]="player.vitality" [editable]="false">
+                </app-editable-field>
+                <span class="damage-count">(Damaged {{ player.damagedCount }} times)</span>
+                <button mat-button color="primary" (click)="takeDamage()">
+                    Take Damage
+                </button>
+            </div>
+            <app-editable-field label="Evasion" [value]="player.evasion" [editable]="false"></app-editable-field>
+            <div class="row armor">
+                <app-editable-field label="Armor" [value]="player.armor" [editable]="false"></app-editable-field>
+                <span class="accessory" *ngIf="player.armorAccessory.key">{{ player.armorAccessory.label }}</span>
+            </div>
+            <app-editable-field label="Alacrity" [value]="player.alacrity" [editable]="false"></app-editable-field>
+            <app-editable-field label="Tenacity" [value]="player.tenacity" [editable]="false"></app-editable-field>
+            <app-editable-field label="Power" [value]="player.power" [editable]="false"></app-editable-field>
+        </div>
+    </mat-card>
     </div>
     <div class="row">
         <mat-card class="col mw-300">
