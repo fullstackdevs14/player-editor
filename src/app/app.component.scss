@@ -1,0 +1,26 @@
+:host {
+    padding: 20px;
+    display: block;
+}
+
+.header {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+
+    h1.mat-headline {
+        margin-bottom: 0;
+    }
+
+    .mat-icon-button {
+        margin-left: 10px;
+    }
+}
+
+input[type='file'] {
+    opacity: 0;
+    visibility: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

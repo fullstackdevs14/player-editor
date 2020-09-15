@@ -1,0 +1,121 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{ player.name || '[New Player]' }}
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="row">
+        <mat-card class="col mw-300">
+            <h2 class="mat-title">Basic Info</h2>
+            <div class="col">
+                <div>
+                    <app-editable-field label="Name" [(value)]="player.name"></app-editable-field>
+                </div>
+                <h2 class="mat-title mt-20">Basic Attributes</h2>
+                <div>
+                    <app-editable-field label="Strength" [(value)]="player.strength" type="number" [min]="0">
+                    </app-editable-field>
+                    <app-editable-field label="Dexterity" [(value)]="player.dexterity" type="number" [min]="0">
+                    </app-editable-field>
+                    <app-editable-field label="Mind" [(value)]="player.mind" type="number" [min]="0">
+                    </app-editable-field>
+                    <app-editable-field label="Presence" [(value)]="player.presence" type="number" [min]="0">
+                    </app-editable-field>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="col mw-300">
+            <h2 class="mat-title">Combat Attributes</h2>
+            <div class="col">
+                <div class="row vitality">
+                    <app-editable-field label="Vitality" [value]="player.vitality" [editable]="false">
+                    </app-editable-field>
+                    <span class="damage-count">(Damaged {{ player.damagedCount }} times)</span>
+                    <button mat-button color="primary" (click)="takeDamage()">
+                        Take Damage
+                    </button>
+                </div>
+                <app-editable-field label="Evasion" [value]="player.evasion" [editable]="false"></app-editable-field>
+                <div class="row armor">
+                    <app-editable-field label="Armor" [value]="player.armor" [editable]="false"></app-editable-field>
+                    <span class="accessory" *ngIf="player.armorAccessory.key">{{ player.armorAccessory.label }}</span>
+                </div>
+                <app-editable-field label="Alacrity" [value]="player.alacrity" [editable]="false"></app-editable-field>
+                <app-editable-field label="Tenacity" [value]="player.tenacity" [editable]="false"></app-editable-field>
+                <app-editable-field label="Power" [value]="player.power" [editable]="false"></app-editable-field>
+            </div>
+        </mat-card>
+    </div>
+    <div class="row">
+        <mat-card class="col mw-300">
+            <h2 class="mat-title">Skills</h2>
+            <div class="row">
+                <div class="col mw-300">
+                    <app-skill-selector label="Fighting" [value]="player.skills[0]"
+                        [maxLevel]="player.getMaxSkillLevel(0)"></app-skill-selector>
+                    <app-skill-selector label="Thievery" [value]="player.skills[1]"
+                        [maxLevel]="player.getMaxSkillLevel(1)"></app-skill-selector>
+                    <app-skill-selector label="Stealth" [value]="player.skills[2]"
+                        [maxLevel]="player.getMaxSkillLevel(2)"></app-skill-selector>
+                    <app-skill-selector label="Archery" [value]="player.skills[3]"
+                        [maxLevel]="player.getMaxSkillLevel(3)"></app-skill-selector>
+                    <app-skill-selector label="Archery" [value]="player.skills[4]"
+                        [maxLevel]="player.getMaxSkillLevel(4)"></app-skill-selector>
+                    <app-skill-selector label="Survival" [value]="player.skills[5]"
+                        [maxLevel]="player.getMaxSkillLevel(5)"></app-skill-selector>
+                    <app-skill-selector label="Perception" [value]="player.skills[6]"
+                        [maxLevel]="player.getMaxSkillLevel(6)"></app-skill-selector>
+                </div>
+                <div class="col mw-300">
+                    <app-skill-selector label="Apothecary" [value]="player.skills[7]"
+                        [maxLevel]="player.getMaxSkillLevel(7)"></app-skill-selector>
+                    <app-skill-selector label="Intimidation" [value]="player.skills[8]"
+                        [maxLevel]="player.getMaxSkillLevel(8)"></app-skill-selector>
+                    <app-skill-selector label="Performance" [value]="player.skills[9]"
+                        [maxLevel]="player.getMaxSkillLevel(9)"></app-skill-selector>
+                    <app-skill-selector label="Manipulation" [value]="player.skills[10]"
+                        [maxLevel]="player.getMaxSkillLevel(10)"></app-skill-selector>
+                    <app-skill-selector label="Insight" [value]="player.skills[11]"
+                        [maxLevel]="player.getMaxSkillLevel(11)"></app-skill-selector>
+                    <app-skill-selector label="Power" [value]="player.skills[12]"
+                        [maxLevel]="player.getMaxSkillLevel(12)"></app-skill-selector>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="row">
+        <mat-card class="col mw-300">
+            <h2 class="mat-title">Armors and Weapons</h2>
+            <div class="row">
+                <div class="col">
+                    <h4 class="mat-subheading-1">Armor</h4>
+                    <mat-radio-group class="radio-group" [(ngModel)]="player.accessories.armor">
+                        <mat-radio-button value="">None</mat-radio-button>
+                        <mat-radio-button *ngFor="let armor of armors" [value]="armor.key">
+                            {{ armor.label }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+                <div class="col">
+                    <h4 class="mat-subheading-1">Weapon</h4>
+                    <mat-radio-group class="radio-group" [(ngModel)]="player.accessories.weapon">
+                        <mat-radio-button value="">None</mat-radio-button>
+                        <mat-radio-button *ngFor="let w of weapons" [value]="w.key">
+                            {{ w.label }}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+        </mat-card>
+        <mat-card class="col mw-300">
+            <h2 class="mat-title">Traits</h2>
+            <div class="col">
+                <mat-checkbox [(checked)]="traitDict[t.key]" (change)="updateTrait(t.key, $event)"
+                    *ngFor="let t of traits">
+                    {{ t.label }}
+                </mat-checkbox>
+            </div>
+        </mat-card>
+    </div>
+</mat-expansion-panel>

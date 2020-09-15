@@ -1,0 +1,19 @@
+<div class="header">
+    <h1 class="mat-headline">Player Editor</h1>
+    <button mat-icon-button color="primary" (click)="add()">
+        <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="save()">
+        <mat-icon>save</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="load()">
+        <mat-icon>system_update_alt</mat-icon>
+    </button>
+    <input type="file" #file (change)="readFile($event)" />
+</div>
+
+<mat-accordion>
+    <app-player [player]="p" *ngFor="let p of players"></app-player>
+</mat-accordion>
+
+<div class="mat-body-1" *ngIf="players.length === 0">No players</div>

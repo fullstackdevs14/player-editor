@@ -1,0 +1,57 @@
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mw-300 {
+    min-width: 300px;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    margin: 0 16px 16px;
+    flex: 1;
+}
+
+h2.mat-title {
+    margin-bottom: 0;
+}
+
+.vitality {
+    justify-content: space-between;
+
+    .mat-button {
+        transform: translateY(8px);
+    }
+}
+
+.armor .accessory {
+    color: gray;
+    padding-top: 18px;
+    padding-left: 20px;
+}
+
+.damage-count {
+    white-space: nowrap;
+    font-size: 10px;
+    color: gray;
+    margin-top: 18px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-subheading-1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.mat-radio-button,
+.mat-checkbox {
+    display: block;
+    margin: 5px 0;
+}

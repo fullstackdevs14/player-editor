@@ -1,0 +1,18 @@
+<label *ngIf="label">{{ label }}:</label>
+<div class="value" *ngIf="!editing">
+    {{ skillLevels[_value].label }}
+</div>
+<button mat-icon-button (click)="toggleEdit()" *ngIf="!editing">
+    <mat-icon>edit</mat-icon>
+</button>
+<app-value-generator [level]="_value" *ngIf="!editing"></app-value-generator>
+<mat-form-field *ngIf="editing">
+    <mat-select [(value)]="_value">
+        <mat-option *ngFor="let opt of options" [value]="opt.value">
+            {{ opt.label }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<button mat-icon-button (click)="save()" *ngIf="editing">
+    <mat-icon>check</mat-icon>
+</button>
